@@ -1,1 +1,3 @@
-# pvzh
+# Looking for contributors!
+credits:
+-/u/Kardinalin
