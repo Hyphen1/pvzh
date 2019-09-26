@@ -8,7 +8,7 @@ public class Actor extends Card {
 	
 	public Actor() {
 		atk = 0;
-		hp = 1;
+		hp = 0;
 		props = new ArrayList<Cardproperties>();
 	}
 	

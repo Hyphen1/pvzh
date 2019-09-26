@@ -11,6 +11,8 @@ public class Field {
 	public String laneFour;
 	public String laneFive;
 	
+	public String[] lanes;
+	
 	public Field() {
 		zombies = new ArrayList<Zentity>();
 		plants = new ArrayList<Pentity>();
@@ -20,6 +22,8 @@ public class Field {
 		laneThree = 'G';
 		laneFour = 'G';
 		laneFive = 'W';
+		
+		lanes = new String[] {laneOne, laneTwo, laneThree, laneFour, laneFive};
 	}
 	
 	public void placeZentity(Actor z, int l, int o) {

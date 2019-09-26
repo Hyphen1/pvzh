@@ -1,3 +1,6 @@
+import java.util.*;
+import PVZH;
+
 public class Deck {
 	
 	//placeholder vars for poc, will eventually use a string array of the names of cards in a storage file
@@ -23,7 +26,13 @@ public class Deck {
 		}
 	}
 	
-	public pickRandom () {
-		
+	public int zPickRandom () {
+		Random random = new Random();
+		return zDeck[random.nextInt(40)];
+	}
+	
+	public int pPickRandom () {
+		Random random = new Random();
+		return pDeck[random.nextInt(40)];
 	}
 }
