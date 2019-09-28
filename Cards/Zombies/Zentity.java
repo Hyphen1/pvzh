@@ -11,7 +11,7 @@ public class Zentity extends Actor {
 		super(a, h, x);
 	}	
 	
-	public setGrandparentVars() {
-		super.setSuperVars(String n, String d, int c, String[] t)
+	public setGrandparentVars(String n, String d, int c, String[] t) {
+		super.setSuperVars(n, d, c, t);
 	}
 }

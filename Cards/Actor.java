@@ -28,6 +28,10 @@ public class Actor extends Card {
 		}
 	}
 	
+	public boolean isActor() {
+		return true
+	}
+	
 	public setSuperVars(String n, String d, int c, String[] t) {
 		super(n, d, c, t);
 	}

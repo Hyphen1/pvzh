@@ -48,24 +48,29 @@ public class Turns {
 		//instantiating the field
 		Field field = new Field();
 		
-		//phase one: zombies place actors
+		//phase one: zombies place actors. Using Scanner right now for UI.
 		while (true) {
 			Scanner input = new Scanner(System.in);
-			System.out.println("Play a zombie? y/n ");
+			System.out.println("Play a card? y/n ");
 			String ans = input.next();
 			if (ans.equals("y")) {
 				System.out.println("Which one? Enter index ");
 				System.out.println(zh.hand);
 				int ind = input.nextInt();
-				Zombiephase zphase = new Zombiephase(zh.hand[ind]);
-				System.out.prinln("Which lane? 1, 2, 3, 4, 5 ");
-				int lane = input.nextInt();
-				if (field.lanes[lane-1] == 'W' && !zphase.zombie.props.contains('aq')) {
-					System.out.println("Can't get that");
+				if (zh.hand[ind].isActor()) {
+					Zombiephase zphase = new Zombiephase(zh.hand[ind]);
+					System.out.prinln("Which lane? 1, 2, 3, 4, 5 ");
+					int lane = input.nextInt();
+					if (field.lanes[lane-1] == 'W' && !zphase.zombie.props.contains('aq')) {
+						System.out.println("Can't get that");
+					}
+					else {
+						zphase.placeActor(lane, 2);
+						zh.discard(ind);
+					}
 				}
 				else {
-					zphase.placeActor(lane, 2);
-					zh.discard(ind);
+					System.out.println("Can't get that");
 				}
 			}
 			else {
@@ -74,24 +79,32 @@ public class Turns {
 			
 		}
 		
-		//phase two: plants place actors
+		//phase two: plants place actors and use actions
 		while (true) {
 			Scanner input = new Scanner(System.in);
-			System.out.println("Play a plant? y/n ");
+			System.out.println("Play a card? y/n ");
 			String ans = input.next();
 			if (ans.equals("y")) {
 				System.out.println("Which one? Enter index ");
 				System.out.println(ph.hand);
 				int ind = input.nextInt();
-				Plantphase pphase = new Plantphase(ph.hand[ind]);
-				System.out.prinln("Which lane? 1, 2, 3, 4, 5 ");
-				int lane = input.nextInt();
-				if (field.lanes[lane-1] == 'W' && !pphase.plant.props.contains('aq')) {
-					System.out.println("Can't get that");
+				if (ph.hand[ind].isActor()) {
+					Plantphase pphase = new Plantphase(ph.hand[ind]);
+					System.out.prinln("Which lane? 1, 2, 3, 4, 5 ");
+					int lane = input.nextInt();
+					if (field.lanes[lane-1] == 'W' && !pphase.plant.props.contains('aq')) {
+						System.out.println("Can't get that");
+					}
+					else {
+						pphase.placeActor(lane, 2);
+						ph.discard(ind);
+					}
+				else if (ph.hand[ind].isTrick()) {
+					;
 				}
+				//temporary can't get, protected class cards not yet programmed
 				else {
-					pphase.placeActor(lane, 2);
-					ph.discard(ind);
+					System.out.println("Can't get that");
 				}
 			}
 			else {
@@ -99,5 +112,8 @@ public class Turns {
 			}
 			
 		}
+		
+		//phase three: zombies use actions
+		
 	}
 }
